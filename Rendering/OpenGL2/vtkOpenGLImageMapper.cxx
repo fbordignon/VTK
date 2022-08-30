@@ -613,6 +613,11 @@ void vtkOpenGLImageMapper::RenderData(vtkViewport* viewport, vtkImageData* data,
   this->Actor->SetPosition(actorPos[0], actorPos[1]);
   this->Actor->SetPosition2(actor->GetPosition2());
 
+  if (!data->GetPointData()->GetScalars())
+  {
+    return;
+  }
+
   switch (data->GetPointData()->GetScalars()->GetDataType())
   {
     vtkTemplateMacro(
