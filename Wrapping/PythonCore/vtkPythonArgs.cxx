@@ -898,6 +898,12 @@ PyObject* vtkPythonArgs::BuildTuple(vtkSmartPointerBase* a, size_t n)
   return Py_None;
 }
 
+// For an array of const smart pointers
+PyObject* vtkPythonArgs::BuildTuple(const vtkSmartPointerBase* a, size_t n)
+{
+  return vtkPythonArgs::BuildTuple(const_cast<vtkSmartPointerBase*>(a), n);
+}
+
 //------------------------------------------------------------------------------
 
 void vtkPythonArgs::DeleteVTKObject(void* v)
