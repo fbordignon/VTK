@@ -91,6 +91,8 @@ void vtkVRRenderer::DeviceRender()
     vtkNew<vtkTransform> floorTransform;
     this->GetFloorTransform(floorTransform);
     this->FloorActor->SetUserTransform(floorTransform);
+    // Prevent floor from being clipped by interactive crop
+    this->FloorActor->GetMapper()->RemoveAllClippingPlanes();
   }
   this->Superclass::DeviceRender();
 }
