@@ -455,7 +455,7 @@ uint32_t vtkOpenXRManager::WaitAndAcquireSwapchainImage(const XrSwapchain& swapc
 
 //------------------------------------------------------------------------------
 bool vtkOpenXRManager::XrCheckOutput(
-  vtkOpenXRManager::OutputLevel level, const XrResult& result, const std::string& message)
+  const vtkOpenXRManager::OutputLevel& level, const XrResult& result, const std::string& message)
 {
   if (XR_FAILED(result))
   {
